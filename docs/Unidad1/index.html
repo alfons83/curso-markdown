@@ -1,0 +1,624 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../about/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Unidad 1 - Módulo de base de datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-necesidad-de-gestionar-datos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Módulo de base de datos" class="md-header__button md-logo" aria-label="Módulo de base de datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Módulo de base de datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unidad 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Módulo de base de datos" class="md-nav__button md-logo" aria-label="Módulo de base de datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Módulo de base de datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Unidad 1
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Unidad 1
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-necesidad-de-gestionar-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Necesidad de gestionar datos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sistemas-basados-en-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sistemas basados en archivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sistemas-de-gestion-de-bases-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Sistemas de gestión de bases de datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Sistemas de gestión de bases de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-modelo-ansix3sparc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Modelo ANSI/X3/SPARC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-tipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Tipos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Componentes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-sgbd-mas-extendidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. SGBD más extendidos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bases-de-datos-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Bases de datos NoSQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-diseno-de-bases-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Diseño de bases de datos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sobre mí
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Unidad 1</h1>
+
+<h2 id="1-necesidad-de-gestionar-datos">1. Necesidad de gestionar datos</h2>
+<p>En informática se conoce como <strong>dato</strong> a cualquier elemento informativo que tenga relevancia para el sistema. Desde el inicio de la informática se ha reconocido al dato como al elemento fundamental de trabajo en un ordenador. Por ello se han realizado numerosos estudios y aplicaciones para mejorar la gestión de los mismos empleando sistemas informáticos.</p>
+<p>Inicialmente los datos que se necesitaba almacenar y gestionar eran pocos, pero poco a poco han ido creciendo. En la actualidad, las numerosas aplicaciones de Internet han producido enormes sistemas de información que incluso para poder gestionarlos requieren de gran número de máquinas haciendo la información accesible desde cualquier parte del planeta y de manera instantánea.</p>
+<p>La escritura fue la herramienta que permitió al ser humano poder gestionar conjuntos de datos cada vez más grandes. Además de permitir compartir esa información entre diferentes personas, también posibilitó que esos datos se guardaran de manera continua e incluso estuvieran disponibles para las siguientes generaciones.</p>
+<p>Para poder almacenar datos y cada vez más datos, el ser humano ideó nuevas herramientas archivos, cajones, carpetas y fichas en las que se almacenaban los datos.</p>
+<p>La informática adaptó sus herramientas para que los elementos que el usuario maneja en el ordenador se parezcan a los que utilizaba manualmente. Así en informática se sigue hablado de ficheros, formularios, carpetas, directorios,...</p>
+<h2 id="2-sistemas-basados-en-archivos">2. Sistemas basados en archivos</h2>
+<p>En el ámbito de la informática, para almacenar información se utiliza un elemento clave llamado <strong>archivo</strong> o <strong>fichero</strong>. Básicamente están formados por una secuencia de dígitos binarios que, siguiendo una estructura lógica determinada, almacenan una información concreta, como por ejemplo, un informe, una imagen, una canción, etc. Suponen una manera de almacenar información en elementos de almacenamiento permanente, lo que se conoce como memoria secundaria.</p>
+<p>Antes de que surgieran los sistemas gestores de bases de datos, que veremos en los apartados siguientes, la información se gestionaba utilizando sistemas de archivos donde cada aplicación:</p>
+<ul>
+<li>Tenía un conjunto de archivos de datos y un conjunto de programas que los gestionaban.</li>
+<li>Gestionaba sus propios archivos de datos.</li>
+</ul>
+<p>Este método de gestión de datos presentaba muchos inconvenientes:</p>
+<ul>
+<li><strong>Redundancia de los datos:</strong> se produce porque los archivos son creados por distintos programas y van cambiando a lo largo del tiempo pudiendo duplicarse los datos.</li>
+<li><strong>Dependencia de los datos física-lógica:</strong> la estructura física de los datos se encuentra codificada en los programas de aplicación. Cualquier cambio en esa estructura implica al programador identificar, modificar y probar todos los programas que manipulan esos archivos.</li>
+<li><strong>Separación y aislamiento de los datos:</strong> al estar repartidos en varios archivos, y tener diferentes formatos, es difícil escribir nuevos programas que aseguren la manipulación de los datos correctos.</li>
+<li><strong>Dificultad para el acceso concurrente:</strong> en un sistema de gestión de archivos es complicado que los usuarios actualicen los datos simultáneamente. Las actualizaciones concurrentes pueden dar por resultado datos inconsistentes.</li>
+<li><strong>Problemas en la seguridad de los datos:</strong> resulta difícil implantar restricciones de seguridad pues las aplicaciones se van añadiendo al sistema según se van necesitando.</li>
+<li><strong>Problemas de integridad de datos:</strong> los valores almacenados en los archivos deben cumplir con restricciones de consistencia. Por ejemplo, no se puede insertar una nota de un alumno en una asignatura si previamente esa asignatura no está creada. Esto implica añadir gran número de líneas de código en los programas.</li>
+</ul>
+<h2 id="3-sistemas-de-gestion-de-bases-de-datos">3. Sistemas de gestión de bases de datos</h2>
+<p>Para resolver los inconvenientes de emplear sistemas de archivos en la gestión de datos surgieron los llamados sistemas de gestión de bases de datos (SGBD) formados por:</p>
+<ul>
+<li><strong>Base de datos</strong> → Colección de datos.</li>
+<li><strong>Sistema de gestión</strong> → Conjunto de programas para almacenar y recuperar los datos.</li>
+</ul>
+<p>En estos sistemas se proporciona un conjunto coordinado de programas, procedimientos y lenguajes que permiten a los distintos usuarios realizar sus tareas habituales con los datos, garantizando su seguridad e integridad. Es habitual referirse a ellos con las siglas en inglés <strong>DBMS</strong> (Database Management system).</p>
+<h3 id="31-funciones">3.1. Funciones</h3>
+<p>El éxito del SGBD reside en mantener la seguridad e integridad de los datos, para ello ofrecerá una serie de herramientas que permitan:</p>
+<ul>
+<li>Crear la estructura de los datos y de la propia base de datos.</li>
+<li>Crear y administrar la estructura física en las unidades de almacenamiento.</li>
+<li>Manipular los datos permitiendo añadir, borrar, modificar o consultar.</li>
+<li>Crear copias de seguridad y permitir su recuperación.</li>
+<li>Gestionar la comunicación con la base de datos.</li>
+<li>Instalar la base de datos.</li>
+<li>Exportar e importar datos.</li>
+</ul>
+<h3 id="32-modelo-ansix3sparc">3.2. Modelo ANSI/X3/SPARC</h3>
+<p>En 1975, el organismo ANSI-SPARC (American National Standards Institute – Standards Planning And Requirements Committee) creó un diseño abstracto para estandarizar la manera en que los SGBD administraban las bases de datos.</p>
+<p>Este diseño constaba de una arquitectura de tres niveles: externo, conceptual e interno. Con esto se conseguía separar la visión que los usuarios tenían de la base de datos con los detalles internos de su estructura y toda su complejidad. Esta arquitectura es la que la mayoría de los SGBD emplean:</p>
+<ul>
+<li><strong>Nivel externo o de visión:</strong> enfocado al usuario de la base de datos. Se muestra al usuario la información que le es pertinente y en el formato adecuado. En este nivel se oculta al usuario la información que no tiene permitido ver.</li>
+<li><strong>Nivel conceptual:</strong> nivel que determina la organización de los datos en la base de datos. Está determinado la información que se almacena y qué relaciones e interrelaciones existen entre los mismos datos. El administrador de la bases de datos debería ser el único usuario con acceso.</li>
+<li><strong>Nivel interno o físico:</strong> determina cómo están almacenados los datos físicamente en el sistema informático. Concreta los detalles de almacenamiento de cada conjunto de datos, tales como el tipo de dato para cierto campo, el método de acceso a una tabla, etc.</li>
+</ul>
+<p>En definitiva, este modelo es una propuesta teórica sobre cómo debe funcionar un SGBD con la arquitectura siguiente:</p>
+<p><img alt="" src="../img/Imagen3-2.png" /></p>
+<h3 id="33-tipos">3.3. Tipos</h3>
+<p>En base al modo de describir los datos internamente en una base de datos junto con sus relaciones, restricciones, etc. se establecen diferentes tipos de SGBD. Los que nos encontramos actualmente serían:</p>
+<ul>
+<li>
+<p><strong>Relacionales:</strong> se utiliza un grupo de tablas para representar los datos y las relaciones entre ellos. Cada tabla está formada por varias columnas que representan propiedades de las filas. Cada fila se identifica, por una clave primaria o identificador. Permite combinar diferentes tablas para formar otras nuevas. Se trata del modelo de datos más usado actualmente.</p>
+</li>
+<li>
+<p><strong>Orientadas a objetos:</strong> buscan adaptar las bases de datos a la programación orientada a objetos. Se intenta solventar las limitaciones de los SGBD relacionales, como puede ser el problema de la herencia o los tipos definidos por el usuario.</p>
+</li>
+<li>
+<p><strong>Relacionales orientados a objetos:</strong> tratan de ser un híbrido entre el modelo relacional y el orientado a objetos. Se intenta conseguir una compatibilidad relacional, dando la posibilidad de integrar mejoras de la orientación a objetos. Las últimas versiones de las actuales bases de datos como Oracle, Microsoft SQL Server y PostgreSQL se pueden considerar de este tipo, llamado ORDBMS.</p>
+</li>
+</ul>
+<p>Los últimos años han aparecido las llamadas bases de datos NoSQL orientadas principalmente al mundo del Big Data. Se tratarán en un apartado posterior.</p>
+<h3 id="34-componentes">3.4. Componentes</h3>
+<p>De modo general encontramos en los SGBD los siguientes componentes:</p>
+<ul>
+<li>
+<p><strong>Lenguajes de la base de datos:</strong> cualquier SGBD ofrece la posibilidad de utilizar lenguajes que permitan especificar los datos que componen la BD, su estructura, relaciones, reglas de integridad, control de acceso, características físicas y vistas externas de los usuarios. Esos lenguajes serían: Lenguaje de Definición de Datos (DDL), Lenguaje de Manejo de Datos (DML) y Lenguaje de Control de Datos (DCL).</p>
+</li>
+<li>
+<p><strong>Diccionario de datos:</strong> lugar donde se deposita la información sobre la totalidad de los datos que forman la base de datos. Contiene las características lógicas de las estructuras que almacenan los datos, su nombre, descripción, contenido y organización.</p>
+</li>
+<li>
+<p><strong>Gestor de la base de datos:</strong> parte software encargada de garantizar el correcto, seguro, íntegro y eficiente acceso y almacenamiento de los datos. Proporciona una interfaz entre los datos almacenados y los programas de aplicación que los manejan. Es un intermediario entre el usuario y los datos.</p>
+</li>
+<li>
+<p><strong>Usuarios:</strong> en los SGBD existen diferentes perfiles de usuario, cada uno de ellos con un permisos concreto. Generalmente distinguiremos entre el administrador de la base de datos (DBA) y el resto de usuarios, donde encontramos a programadores, analistas, usuarios finales, etc.</p>
+</li>
+<li>
+<p><strong>Herramientas de la base de datos:</strong> aplicaciones que permiten a los administradores la gestión de la base de datos, de los usuarios y permisos, generadores de formularios, informes, etc.</p>
+</li>
+</ul>
+<h3 id="35-sgbd-mas-extendidos">3.5. SGBD más extendidos</h3>
+<p>Actualmente existen diferentes SGBD disponibles. Según el ránking establecido en la página web DB-Engines, los más empleados actualmente serían, en ese orden:</p>
+<ol>
+<li><strong>Oracle:</strong> empleado principalmente en las bases de datos empresariales, se caracteriza por su alto rendimiento, escalabilidad y seguridad.</li>
+<li><strong>MySQL:</strong> es el más popular en la web, utilizado principalmente con el lenguaje de programación PHP.</li>
+<li><strong>Microsoft SQL Server:</strong> compite con Oracle dentro del entorno empresarial.</li>
+<li><strong>PostgreSQL:</strong> destaca su alto nivel de concurrencia y soporte para múltiples tipos de datos.</li>
+<li><strong>MongoDB:</strong> SGBD NoSQL más popular ofrece una alta disponibilidad y balanceo de carga.</li>
+</ol>
+<h2 id="4-bases-de-datos-nosql">4. Bases de datos NoSQL</h2>
+<p>NoSQL (Not Only SQL) es un término que engloba a una gran variedad de SGDB que almacenan los datos siguiendo diferentes formatos y estructuras, a diferencia de los SGBD del tipo relacional (los más usados históricamente) que organizan la información en estructuras concretas como son las tablas, filas y columnas.</p>
+<p>Los SGBD NoSQL usan estructuras clave-valor, grafos, … y tampoco soportan el uso del lenguaje SQL, un estándar en el acceso y manipulación de información contenida en las bases de datos.</p>
+<p>Las principales ventajas que ofrecen serían su escalabilidad y altas prestaciones con volúmenes grandes de datos. Sin embargo, y esa es la gran desventaja, adolecen de la llamada propiedad ACID (Atomicity, Consistency, Isolation, Durability) propia de los SGBD relaciones, los SQL. Esto puede provocar problemas de redundancia y fragmentación de datos.</p>
+<p><img alt="" src="../img/Imagen4.0.png" /></p>
+<p>Como norma, un SGBD NoSQL sería aconsejable cuando:</p>
+<ul>
+<li>El volumen de datos operacional es muy grande</li>
+<li>La escritura/lectura se realiza de modo masivo</li>
+<li>Se necesita un tiempo de respuesta rápido</li>
+<li>La información no es apta para ser consultada con lenguaje SQL</li>
+<li>Trabajaremos con tipos de datos flexibles y diversos</li>
+</ul>
+<p>Algunas de los SGBD NoSQL actuales serían:</p>
+<ul>
+<li>MongoDB</li>
+<li>Cassandra</li>
+<li>Elasticsearch</li>
+<li>Redis</li>
+</ul>
+<h2 id="5-diseno-de-bases-de-datos">5. Diseño de bases de datos</h2>
+<p>Implementar el diseño de una base de datos consiste en definir su estructura de datos en un sistema de información determinado partiendo de una toma de requerimientos y análisis del sistema que se quiere modelizar.</p>
+<p>La fase de análisis y recolección de requerimientos inicial producirá:</p>
+<ul>
+<li>Requisitos de datos: se utilizan como una fuente para el diseño de la base de datos y se deben especificarse en la forma más detallada y completa posible.</li>
+<li>Requisitos funcionales: utilizados como fuente para el diseño de la aplicación  final.</li>
+</ul>
+<p>La fase de diseño de una base de datos debería englobar tres etapas:</p>
+<ul>
+<li><strong>Diseño conceptual:</strong> crearemos una estructura de la información independiente de la tecnología a emplear. Su resultado es el llamado esquema conceptual. Este esquema constituye una descripción de alto nivel de la estructura de la base de datos independiente del SGBD final.</li>
+<li><strong>Diseño lógico:</strong> partiremos del resultado del diseño conceptual, transformándolo y adaptándolo al modelo de SGBD que utilizaremos (relacional, orientado a objetos, etc.).</li>
+<li><strong>Diseño físico:</strong> se transforma la estructura obtenida en el diseño lógico acorde al SGBD final y hardware donde se implementará la base de datos con el objetivo de conseguir una mayor eficiencia. Cada SGBD ha desarrollado un lenguaje propio para implementar el diseño físico de la base de datos con el fin de obtener el máximo rendimiento del hardware y del sistema operativo.</li>
+</ul>
+<p><img alt="" src="../img/Imagen5.0.png" /></p>
+<p>El diseño de una base de datos tiene gran importancia con el fin de evitar:</p>
+<ul>
+<li>Redundancia: repetir datos de forma innecesaria, malgastando espacio de almacenamiento y provocando inconsistencias.</li>
+<li>Imposibilidad de representar información: determinados aspectos de la organización pueden resultar imposibles o muy difíciles de modelizar.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
