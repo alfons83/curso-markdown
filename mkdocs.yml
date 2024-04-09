@@ -6,8 +6,6 @@ site_url: https://alfons83.github.io/curso-markdown
 #    - Sobre mí: about.md
 docs_dir: md
 site_dir: docs
-plugins:
-  - pdf-export
 theme:
   name: material
   palette:
@@ -54,6 +52,7 @@ markdown_extensions:
   - footnotes
 
 plugins:
+  - pdf-export
   - search:
       lang: es
   - awesome-pages:
