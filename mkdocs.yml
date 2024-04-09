@@ -1,4 +1,5 @@
 site_name: Módulo de base de datos
+site_url: https://alfons83.github.io/curso-markdown
 nav:
     - Inicio: index.md
     - Unidad 1: Unidad1.md
